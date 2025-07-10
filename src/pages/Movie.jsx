@@ -20,38 +20,35 @@ function Movie() {
   const [movieError, setMovieError] = useState(null);
   const [showRentalForm, setShowRentalForm] = useState(false);
   const [showPurchaseForm, setShowPurchaseForm] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState('');
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      try {
-        setMovieLoading(true);
-        setMovieError(null);
-        
-        // Esperar a que el catálogo se cargue si está cargando
-        if (catalogLoading) return;
-        
-        // Verificar si hubo error al cargar el catálogo
-        if (catalogError) {
-          throw new Error('Error al cargar el catálogo');
-        }
-        
-        // Buscar la película
-        const foundMovie = movies.find(m => m.id === parseInt(id));
-        
-        if (!foundMovie) {
-          throw new Error(`No se encontró la película con ID: ${id}`);
-        }
-        
-        // Simular carga de detalles adicionales
-        setTimeout(() => {
-          setMovie(foundMovie);
-          setMovieLoading(false);
-        }, 500);
-      } catch (err) {
-        setMovieError(err.message);
-        setMovieLoading(false);
+  const fetchMovie = async () => {
+    try {
+      setMovieLoading(true);
+      setMovieError(null);
+
+      if (catalogLoading) return;
+      if (catalogError) {
+        throw new Error('Error al cargar el catálogo');
       }
-    };
+
+      const foundMovie = movies.find(m => m.id === parseInt(id));
+      if (!foundMovie) {
+        throw new Error(`No se encontró la película con ID: ${id}`);
+      }
+
+      setTimeout(() => {
+        setMovie(foundMovie);
+        // Si la película tiene un idioma principal, lo selecciona; si no, deja vacío
+        setSelectedLanguage(foundMovie.language || '');
+        setMovieLoading(false);
+      }, 500);
+    } catch (err) {
+      setMovieError(err.message);
+      setMovieLoading(false);
+    }
+  };
 
     fetchMovie();
   }, [id, movies, catalogLoading, catalogError]);
@@ -122,7 +119,18 @@ function Movie() {
               <p><strong>Duración:</strong> {movie.duration} minutos</p>
               <p><strong>Género:</strong> {movie.genre.join(', ')}</p>
               <p><strong>Reparto:</strong> {movie.actors.join(', ')}</p>
-              <p><strong>Idioma:</strong> {movie.language || 'Español'}</p>
+              <p>
+                <strong>Idioma:</strong>
+                <select
+                  value={selectedLanguage}
+                  onChange={e => setSelectedLanguage(e.target.value)}
+                  style={{ marginLeft: '0.5rem' }}
+                >
+                  {['Español', 'Inglés', 'Francés', 'Alemán', 'Italiano'].map(lang => (
+                    <option key={lang} value={lang}>{lang}</option>
+                  ))}
+                </select>
+              </p>
               <p><strong>Valoración:</strong> {movie.rating || 'N/A'}/10</p>
             </div>
             
@@ -145,9 +153,6 @@ function Movie() {
           </div>
         </div>
         
-        {/* Detalles extendidos de la película */}
-        <MovieDetails movie={movie} />
-        
         {/* Sección del tráiler */}
         <div className="trailer-section">
           <h2 className="section-title">Tráiler Oficial</h2>
@@ -161,6 +166,9 @@ function Movie() {
             />
           </div>
         </div>
+
+        {/* Detalles extendidos de la película */}
+        <MovieDetails movie={movie} />
         
         {/* Formularios modales */}
         {showRentalForm && (
