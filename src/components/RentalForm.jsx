@@ -59,7 +59,7 @@ function RentalForm({ movie, onClose }) {
             </select>
           </div>
           
-          <button type="submit" disabled={isSubmitting}>
+          <button className="button button--primary" type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Procesando...' : 'Confirmar Alquiler'}
           </button>
         </form>

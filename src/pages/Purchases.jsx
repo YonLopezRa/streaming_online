@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';  // Añade esta línea
+import React, { useState, useEffect } from 'react';
 import useRental from '../hooks/useRental';
 import MovieCard from '../components/MovieCard';
+import elPadrinoImg from '../images/el_padrino.jpg';
 import '../styles/main.css';
 
 function Purchases() {
@@ -12,7 +13,7 @@ function Purchases() {
         id: 1,
         movieId: 1,
         title: "El Padrino",
-        image: "https://via.placeholder.com/300x450",
+        image: elPadrinoImg,
         date: "2023-05-15T12:00:00Z",
         price: 9.99
       }

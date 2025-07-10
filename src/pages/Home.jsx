@@ -6,7 +6,7 @@ import '../styles/main.css';
 
 function Home() {
   const { movies, loading, error } = useMovies();
-  const featuredMovies = movies.slice(0, 4); // Mostrar solo 4 películas destacadas
+  const featuredMovies = movies.slice(0, 5); // Mostrar solo 5 películas destacadas
 
   return (
     <div className="home">
