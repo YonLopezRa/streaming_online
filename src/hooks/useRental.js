@@ -1,7 +1,18 @@
 import { useState } from 'react';
+import matrixImg from '../images/matrix.jpg';
 
 function useRental() {
-  const [rentals, setRentals] = useState([]);
+  const [rentals, setRentals] = useState([
+    {
+    id: 1,
+    movieId: 4,
+    title: "Matrix",
+    image: matrixImg,
+    date: new Date().toISOString(),
+    expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 días después
+    price: 3.49
+  }
+  ]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
