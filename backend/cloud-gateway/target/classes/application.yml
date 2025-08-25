@@ -1,0 +1,64 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+    globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "http://localhost:3000"
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: movie-search-service
+          uri: lb://movie-search-service
+          predicates:
+            - Path=/api/movies/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: movieSearchCircuitBreaker
+                fallbackUri: forward:/fallback/movies
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    initial-instance-info-replication-interval-seconds: 3
+    instance-info-replication-interval-seconds: 3
+    eureka-service-url-poll-interval-seconds: 2
+    eureka-connection-idle-timeout-seconds: 5
+    registry-fetch-interval-seconds: 3
+  instance:
+    lease-renewal-interval-in-seconds: 2
+    lease-expiration-duration-in-seconds: 4
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway,routes
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true
+
+# Configuración de resiliencia
+resilience4j:
+  circuitbreaker:
+    instances:
+      backendA:
+        register-health-indicator: true
+        sliding-window-size: 10
+        minimum-number-of-calls: 5

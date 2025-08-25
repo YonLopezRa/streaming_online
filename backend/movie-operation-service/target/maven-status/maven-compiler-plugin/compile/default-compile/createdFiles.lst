@@ -1,0 +1,4 @@
+com\streaming\operation\OperationApplication.class
+com\streaming\operation\Rental.class
+com\streaming\operation\RentalController$RentalRequest.class
+com\streaming\operation\RentalController.class

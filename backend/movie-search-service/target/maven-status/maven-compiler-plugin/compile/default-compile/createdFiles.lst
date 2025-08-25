@@ -1,0 +1,4 @@
+com\streaming\search\MovieDocument.class
+com\streaming\search\MovieSearchController.class
+com\streaming\search\MovieSearchApplication.class
+com\streaming\search\MovieSearchController$SearchResponse.class

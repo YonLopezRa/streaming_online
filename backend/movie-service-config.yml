@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: movie-search-service
+  data:
+    elasticsearch:
+      client:
+        reactive:
+          endpoints: http://elasticsearch:9200  # ✅ HTTP explícito
+      uris: http://elasticsearch:9200           # ✅ URIs explícitas
+      connection-timeout: 30s
+      socket-timeout: 60s
+      username: ""
+      password: ""
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+endpoint:
+  health:
+    show-details: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true

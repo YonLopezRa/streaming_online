@@ -1,0 +1,20 @@
+{ "index": {} }
+{"title":"El Padrino","director":"Francis Ford Coppola","year":1972,"synopsis":"La historia de la familia Corleone...","actors":["Marlon Brando","Al Pacino","James Caan"],"genres":["Crimen","Drama"],"price":9.99,"rentalPrice":3.99,"imageUrl":"../images/el_padrino.jpg","trailerId":"sY1S34973zA"}
+{ "index": {} }
+{"title":"Pulp Fiction","director":"Quentin Tarantino","year":1994,"synopsis":"Las vidas de dos mafiosos...","actors":["John Travolta","Uma Thurman","Samuel L. Jackson"],"genres":["Crimen","Drama"],"price":8.99,"rentalPrice":2.99,"imageUrl":"../images/pulp_fiction.jpg","trailerId":"s7EdQ4FqbhY"}
+{ "index": {} }
+{"title":"The Dark Knight","director":"Christopher Nolan","year":2008,"synopsis":"Batman enfrenta al Joker...","actors":["Christian Bale","Heath Ledger","Aaron Eckhart"],"genres":["Acción","Drama","Crimen"],"price":10.99,"rentalPrice":4.99,"imageUrl":"../images/batman.jpg","trailerId":"EXeTwQWrcwY"}
+{ "index": {} }
+{"title":"Forrest Gump","director":"Robert Zemeckis","year":1994,"synopsis":"La vida de Forrest Gump...","actors":["Tom Hanks","Robin Wright","Gary Sinise"],"genres":["Drama","Romance"],"price":7.99,"rentalPrice":2.49,"imageUrl":"../images/forrest_gump.jpg","trailerId":"bLvqoHBptjg"}
+{ "index": {} }
+{"title":"The Matrix","director":"Lana Wachowski","year":1999,"synopsis":"Neo descubre la realidad...","actors":["Keanu Reeves","Laurence Fishburne","Carrie-Anne Moss"],"genres":["Acción","Ciencia Ficción"],"price":8.49,"rentalPrice":3.99,"imageUrl":"../images/matrix.jpg","trailerId":"vKQi3bBA1y8"}
+{ "index": {} }
+{"title":"Inception","director":"Christopher Nolan","year":2010,"synopsis":"Un ladrón que roba secretos...","actors":["Leonardo DiCaprio","Joseph Gordon-Levitt","Elliot Page"],"genres":["Acción","Ciencia Ficción","Thriller"],"price":11.99,"rentalPrice":4.49,"imageUrl":"../images/inception.jpg","trailerId":"8hP9D6kZseM"}
+{ "index": {} }
+{"title":"The Shawshank Redemption","director":"Frank Darabont","year":1994,"synopsis":"La historia de Andy Dufresne...","actors":["Tim Robbins","Morgan Freeman","Bob Gunton"],"genres":["Drama"],"price":9.49,"rentalPrice":3.49,"imageUrl":"../images/shawshank.jpg","trailerId":"6hB3S9bIaco"}
+{ "index": {} }
+{"title":"Fight Club","director":"David Fincher","year":1999,"synopsis":"Un hombre insomne conoce a un vendedor...","actors":["Brad Pitt","Edward Norton","Helena Bonham Carter"],"genres":["Drama"],"price":8.99,"rentalPrice":2.99,"imageUrl":"https://example.com/fightclub.jpg","trailerId":"SUXWAEX2jlg"}
+{ "index": {} }
+{"title":"Interstellar","director":"Christopher Nolan","year":2014,"synopsis":"Un grupo de exploradores viaja...","actors":["Matthew McConaughey","Anne Hathaway","Jessica Chastain"],"genres":["Aventura","Drama","Ciencia Ficción"],"price":12.99,"rentalPrice":5.49,"imageUrl":"https://example.com/interstellar.jpg","trailerId":"zSWdZVtXT7E"}
+{ "index": {} }
+{"title":"The Lord of the Rings: The Return of the King","director":"Peter Jackson","year":2003,"synopsis":"La conclusión de la trilogía...","actors":["Elijah Wood","Viggo Mortensen","Ian McKellen"],"genres":["Aventura","Drama","Fantasía"],"price":13.99,"rentalPrice":5.99,"imageUrl":"https://example.com/lotr_return.jpg","trailerId":"r5XUM2MZ4jA"}

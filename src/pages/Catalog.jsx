@@ -9,6 +9,9 @@ function Catalog() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
+  console.log('Movies data:', movies);
+  console.log('Search results:', searchResults);
+
   const handleSearch = (query) => {
     setSearchQuery(query);
     if (query) {
@@ -25,6 +28,10 @@ function Catalog() {
   // Películas a mostrar (resultados de búsqueda o todas las películas)
   const displayedMovies = searchQuery ? searchResults : movies;
 
+  if (!displayedMovies || !Array.isArray(displayedMovies)) {
+    return <div>Error: Datos no válidos recibidos del servidor</div>;
+  }
+
   return (
     <div className="catalog">
       <h1 className="catalog__title">Catálogo de Películas</h1>
@@ -34,8 +41,9 @@ function Catalog() {
         <p className="no-results">No se encontraron películas</p>
       ) : (
         <div className="catalog__grid">
+          {console.log('Movies data:', displayedMovies)}
           {displayedMovies.map(movie => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard key={movie.id || movie._id || movie.title} movie={movie} />
           ))}
         </div>
       )}

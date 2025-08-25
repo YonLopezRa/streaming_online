@@ -1,0 +1,46 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  server:
+    enable-self-preservation: false  # ✅ Desactivar auto-preservación
+    eviction-interval-timer-in-ms: 5000  # ✅ Reducir intervalo de evicción
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 5  # ✅ Reducir intervalo de renovación
+    lease-expiration-duration-in-seconds: 10  # ✅ Reducir expiración
+
+    management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: false
+  health:
+    circuitbreakers:
+      enabled: true
+    diskspace:
+      enabled: true
+
+# Configuración de resiliencia
+resilience4j:
+  circuitbreaker:
+    instances:
+      backendA:
+        register-health-indicator: true
+        sliding-window-size: 10
+        minimum-number-of-calls: 5

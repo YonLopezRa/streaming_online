@@ -19,8 +19,8 @@ function Home() {
         {error && <div className="error">Error al cargar películas: {error}</div>}
         
         <div className="movies-grid">
-          {featuredMovies.map(movie => (
-            <MovieCard key={movie.id} movie={movie} />
+          {movies.map(movie => (
+            <MovieCard key={movie.id || movie._id || movie.title} movie={movie} />
           ))}
         </div>
       </section>

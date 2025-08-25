@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import useRental from '../hooks/useRental';
 import MovieCard from '../components/MovieCard';
-import elPadrinoImg from '../images/el_padrino.jpg';
 import '../styles/main.css';
 
 function Purchases() {
   const [purchases, setPurchases] = useState([]);
-  
+  // Simular datos de compras
   useEffect(() => {
-    const mockPurchases = [
-      {
-        id: 1,
-        movieId: 1,
-        title: "El Padrino",
-        image: elPadrinoImg,
-        date: "2023-05-15T12:00:00Z",
-        price: 9.99
-      }
-    ];
-    setPurchases(mockPurchases);
+    const savedPurchases = localStorage.getItem('moviePurchases');
+    if (savedPurchases) {
+      setPurchases(JSON.parse(savedPurchases));
+    } else {
+      // Datos mock iniciales
+      const mockPurchases = [
+        {
+          id: 1,
+          movieId: 1,
+          title: "El Padrino",
+          image: "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+          date: "2023-05-15T12:00:00Z",
+          price: 9.99
+        }
+      ];
+      setPurchases(mockPurchases);
+      localStorage.setItem('moviePurchases', JSON.stringify(mockPurchases));
+    }
   }, []);
 
   return (
@@ -41,9 +46,7 @@ function Purchases() {
               <div className="purchase-info">
                 <p>Comprado el: {new Date(purchase.date).toLocaleDateString()}</p>
                 <p>Precio: ${purchase.price}</p>
-                <button 
-                  className="button button--primary"
-                >
+                <button className="button button--primary">
                   Ver detalles
                 </button>
               </div>
